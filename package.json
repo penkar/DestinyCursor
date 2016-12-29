@@ -8,8 +8,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "css-loader": "^0.26.1",
+    "node-sass": "^4.1.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   },
