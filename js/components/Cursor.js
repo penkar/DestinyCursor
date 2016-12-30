@@ -25,7 +25,12 @@ export default class Cursor extends Component {
 
     return (
       <div id='cursor' style={style}>
-
+        <ul>
+          <li/>
+          <li/>
+          <li/>
+          <li/>
+        </ul>
       </div>
     )
   }
