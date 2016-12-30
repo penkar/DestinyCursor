@@ -1,9 +1,12 @@
 'use strict'
 import React from 'react'
 import { render } from 'react-dom';
-import Main from './components/Main'
-
+import Cursor from './components/Cursor'
+import GenericBG from './components/GenericBG'
 render(
-  <Main />,
+  <div>
+    <GenericBG />
+    <Cursor />
+  </div>,
   document.getElementById('app')
 );
