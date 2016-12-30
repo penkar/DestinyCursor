@@ -4,17 +4,112 @@ body, html {
   cursor: none;
 }
 
+.shared{
+  border-radius: 50%;
+}
+
 #cursor {
-  position: absolute;
-  border: 3px solid blue;
-  .shared {
-    background-color: red;
+  position: fixed;
+  height: 3.5rem;
+  width: 3.5rem;
+  border: 3px solid gray;
+
+  background-color: transparent;
+  .div {
+    background-color: transparent;
+  }
+
+  .shield{
+
+    div {
+      position:relative;
+      // margin: 6px 0px 0px 6px;
+      top:0px;
+      left:0px;
+      height: 50px;
+      width: 50px;
+      // animation-name: rotate;
+      // animation-duration: 2s;
+      // animation-iteration-count: infinite;
+      // animation-timing-function: linear;
+    }
+
+    .child1, .child2, .child3, .child4{
+      position: absolute;
+      top:0px;
+      left:0px;
+    }
+
+    .child1{
+      border-right: solid 3px black;
+      border-top: solid 3px transparent;
+      border-left: solid 3px black;
+      border-bottom: solid 3px transparent;
+      z-index: 1000;
+    }
+    .child2{
+      transform: rotate(45deg);
+      border-right: solid 3px green;
+      border-top: solid 3px transparent;
+      border-left: solid 3px green;
+      border-bottom: solid 3px transparent;
+    }
+    .child3{
+      border-top: solid 3px blue;
+      border-right: solid 3px transparent;
+      border-bottom: solid 3px blue;
+      border-left: solid 3px transparent;
+    }
+    .child4{
+      transform: rotate(45deg);
+      border-top: solid 3px red;
+      border-right: solid 3px transparent;
+      border-bottom: solid 3px red;
+      border-left: solid 3px transparent;
+    }
+
+    // .child2{
+    //   background-image: linear-gradient(126deg, gray 50%, white 50%), linear-gradient(90deg, white 50%, gray 50%);
+    // }
+    //
+    // .child3{
+    //   background-image: linear-gradient(126deg, gray 50%, white 50%), linear-gradient(90deg, white 50%, gray 50%);
+    // }
+
+    // .child2 {
+    //
+    //   border-top: solid 3px transparent;
+    //   border-left: solid 3px transparent;
+    //   border-bottom: solid 3px transparent;
+    //   border-right: solid 3px transparent;
+    //
+    //   animation-name: rotate2;
+    //   animation-duration: 2s;
+    //   animation-iteration-count: infinite;
+    //   animation-timing-function: linear;
+    // }
+    //
+    // .child3{
+    //
+    //   border-top: solid 3px blue;
+    //   border-left: solid 3px green;
+    //   border-bottom: solid 3px red;
+    //   border-right: solid yellow;
+    //
+    //   animation-name: rotate;
+    //   animation-duration: 2s;
+    //   animation-iteration-count: infinite;
+    //   animation-timing-function: linear;
+    // }
   }
 }
 
-.shared{
-  border-radius: 50%;
-  height: 60px;
-  width: 60px;
-  background-color: transparent;
+@keyframes rotate2 {
+  from {transform: rotate(45deg);}
+  to {transform: rotate(405deg);}
+}
+
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
 }

@@ -21497,7 +21497,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(179);
+	__webpack_require__(183);
 
 	var Main = function (_Component) {
 	  _inherits(Main, _Component);
@@ -21536,17 +21536,16 @@
 
 	      var style = { top: clientY, left: clientX };
 	      return _react2.default.createElement(
-	        'div',
-	        { id: 'cursor', className: 'shared', style: style },
-	        _react2.default.createElement(
-	          'div',
-	          { className: 'shared child', style: style },
-	          _react2.default.createElement(
-	            'div',
-	            { className: 'shared', style: style },
-	            _react2.default.createElement('div', { className: 'shared', style: style })
-	          )
-	        )
+	        'ul',
+	        { className: 'circle' },
+	        _react2.default.createElement('li', null),
+	        _react2.default.createElement('li', null),
+	        _react2.default.createElement('li', null),
+	        _react2.default.createElement('li', null),
+	        _react2.default.createElement('li', null),
+	        _react2.default.createElement('li', null),
+	        _react2.default.createElement('li', null),
+	        _react2.default.createElement('li', null)
 	      );
 	    }
 	  }]);
@@ -21557,47 +21556,65 @@
 	exports.default = Main;
 
 /***/ },
-/* 179 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(180);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(181)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 180 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(182)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "body, html {\n  width: 100vw;\n  height: 400vh;\n  cursor: none; }\n\n#cursor {\n  position: absolute;\n  border: 3px solid blue; }\n  #cursor .shared {\n    background-color: red; }\n\n.shared {\n  border-radius: 50%;\n  height: 60px;\n  width: 60px;\n  background-color: transparent; }\n", ""]);
-
-	// exports
-
-
-/***/ },
+/* 179 */,
+/* 180 */,
 /* 181 */
+/***/ function(module, exports) {
+
+	/*
+		MIT License http://www.opensource.org/licenses/mit-license.php
+		Author Tobias Koppers @sokra
+	*/
+	// css base code, injected by the css-loader
+	module.exports = function() {
+		var list = [];
+
+		// return the list of modules as css string
+		list.toString = function toString() {
+			var result = [];
+			for(var i = 0; i < this.length; i++) {
+				var item = this[i];
+				if(item[2]) {
+					result.push("@media " + item[2] + "{" + item[1] + "}");
+				} else {
+					result.push(item[1]);
+				}
+			}
+			return result.join("");
+		};
+
+		// import a list of modules into the list
+		list.i = function(modules, mediaQuery) {
+			if(typeof modules === "string")
+				modules = [[null, modules, ""]];
+			var alreadyImportedModules = {};
+			for(var i = 0; i < this.length; i++) {
+				var id = this[i][0];
+				if(typeof id === "number")
+					alreadyImportedModules[id] = true;
+			}
+			for(i = 0; i < modules.length; i++) {
+				var item = modules[i];
+				// skip already imported module
+				// this implementation is not 100% perfect for weird media query combinations
+				//  when a module is imported multiple times with different media queries.
+				//  I hope this will never occur (Hey this way we have smaller bundles)
+				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
+					if(mediaQuery && !item[2]) {
+						item[2] = mediaQuery;
+					} else if(mediaQuery) {
+						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
+					}
+					list.push(item);
+				}
+			}
+		};
+		return list;
+	};
+
+
+/***/ },
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -21849,59 +21866,43 @@
 
 
 /***/ },
-/* 182 */
-/***/ function(module, exports) {
+/* 183 */
+/***/ function(module, exports, __webpack_require__) {
 
-	/*
-		MIT License http://www.opensource.org/licenses/mit-license.php
-		Author Tobias Koppers @sokra
-	*/
-	// css base code, injected by the css-loader
-	module.exports = function() {
-		var list = [];
+	// style-loader: Adds some css to the DOM by adding a <style> tag
 
-		// return the list of modules as css string
-		list.toString = function toString() {
-			var result = [];
-			for(var i = 0; i < this.length; i++) {
-				var item = this[i];
-				if(item[2]) {
-					result.push("@media " + item[2] + "{" + item[1] + "}");
-				} else {
-					result.push(item[1]);
-				}
-			}
-			return result.join("");
-		};
+	// load the styles
+	var content = __webpack_require__(184);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(182)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main2.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main2.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
 
-		// import a list of modules into the list
-		list.i = function(modules, mediaQuery) {
-			if(typeof modules === "string")
-				modules = [[null, modules, ""]];
-			var alreadyImportedModules = {};
-			for(var i = 0; i < this.length; i++) {
-				var id = this[i][0];
-				if(typeof id === "number")
-					alreadyImportedModules[id] = true;
-			}
-			for(i = 0; i < modules.length; i++) {
-				var item = modules[i];
-				// skip already imported module
-				// this implementation is not 100% perfect for weird media query combinations
-				//  when a module is imported multiple times with different media queries.
-				//  I hope this will never occur (Hey this way we have smaller bundles)
-				if(typeof item[0] !== "number" || !alreadyImportedModules[item[0]]) {
-					if(mediaQuery && !item[2]) {
-						item[2] = mediaQuery;
-					} else if(mediaQuery) {
-						item[2] = "(" + item[2] + ") and (" + mediaQuery + ")";
-					}
-					list.push(item);
-				}
-			}
-		};
-		return list;
-	};
+/***/ },
+/* 184 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(181)();
+	// imports
+
+
+	// module
+	exports.push([module.id, ".circle {\n  position: relative;\n  border: 1px solid black;\n  padding: 0;\n  margin: 1em auto;\n  width: 20em;\n  height: 20em;\n  border-radius: 50%;\n  list-style: none;\n  overflow: hidden; }\n\nli {\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 50%;\n  height: 50%;\n  transform-origin: 0% 100%; }\n\n.text {\n  position: absolute;\n  left: -100%;\n  width: 200%;\n  height: 200%;\n  text-align: center;\n  -webkit-transform: skewY(60deg) rotate(15deg);\n  -ms-transform: skewY(60deg) rotate(15deg);\n  transform: skewY(60deg) rotate(15deg);\n  padding-top: 20px; }\n\nli:first-child {\n  background: lightgray;\n  -webkit-transform: rotate(0deg) skewY(-60deg);\n  -ms-transform: rotate(0deg) skewY(-60deg);\n  transform: rotate(0deg) skewY(-60deg); }\n\nli:nth-child(2) {\n  background: white;\n  -webkit-transform: rotate(30deg) skewY(-60deg);\n  -ms-transform: rotate(30deg) skewY(-60deg);\n  transform: rotate(30deg) skewY(-60deg); }\n\nli:nth-child(3) {\n  background: lightgray;\n  -webkit-transform: rotate(60deg) skewY(-60deg);\n  -ms-transform: rotate(60deg) skewY(-60deg);\n  transform: rotate(60deg) skewY(-60deg); }\n\nli:nth-child(4) {\n  background: white;\n  -webkit-transform: rotate(90deg) skewY(-60deg);\n  -ms-transform: rotate(90deg) skewY(-60deg);\n  transform: rotate(90deg) skewY(-60deg); }\n\nli:nth-child(5) {\n  background: lightgray;\n  -webkit-transform: rotate(120deg) skewY(-60deg);\n  -ms-transform: rotate(120deg) skewY(-60deg);\n  transform: rotate(120deg) skewY(-60deg); }\n\nli:nth-child(6) {\n  background: white;\n  -webkit-transform: rotate(150deg) skewY(-60deg);\n  -ms-transform: rotate(150deg) skewY(-60deg);\n  transform: rotate(150deg) skewY(-60deg); }\n\nli:nth-child(7) {\n  background: lightgray;\n  -webkit-transform: rotate(180deg) skewY(-60deg);\n  -ms-transform: rotate(180deg) skewY(-60deg);\n  transform: rotate(180deg) skewY(-60deg); }\n\nli:nth-child(8) {\n  background: white;\n  -webkit-transform: rotate(210deg) skewY(-60deg);\n  -ms-transform: rotate(210deg) skewY(-60deg);\n  transform: rotate(210deg) skewY(-60deg); }\n", ""]);
+
+	// exports
 
 
 /***/ }
