@@ -21,7 +21,7 @@ export default class Main extends Component {
 
   render() {
     let {clientY, clientX} = this.state;
-    let style={top:clientY, left:clientX};
+    let style={top:clientY-28, left:clientX-28};
     return (
       <div id='cursor' style={style}>
         <ul className='circle'>
@@ -34,6 +34,7 @@ export default class Main extends Component {
           <li></li>
           <li></li>
         </ul>
+        <div className='covercircle'/>
       </div>
     );
   }

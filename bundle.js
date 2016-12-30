@@ -21497,7 +21497,7 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	__webpack_require__(183);
+	__webpack_require__(179);
 
 	var Main = function (_Component) {
 	  _inherits(Main, _Component);
@@ -21534,7 +21534,7 @@
 	          clientY = _state.clientY,
 	          clientX = _state.clientX;
 
-	      var style = { top: clientY, left: clientX };
+	      var style = { top: clientY - 28, left: clientX - 28 };
 	      return _react2.default.createElement(
 	        'div',
 	        { id: 'cursor', style: style },
@@ -21549,7 +21549,8 @@
 	          _react2.default.createElement('li', null),
 	          _react2.default.createElement('li', null),
 	          _react2.default.createElement('li', null)
-	        )
+	        ),
+	        _react2.default.createElement('div', { className: 'covercircle' })
 	      );
 	    }
 	  }]);
@@ -21560,8 +21561,46 @@
 	exports.default = Main;
 
 /***/ },
-/* 179 */,
-/* 180 */,
+/* 179 */
+/***/ function(module, exports, __webpack_require__) {
+
+	// style-loader: Adds some css to the DOM by adding a <style> tag
+
+	// load the styles
+	var content = __webpack_require__(180);
+	if(typeof content === 'string') content = [[module.id, content, '']];
+	// add the styles to the DOM
+	var update = __webpack_require__(182)(content, {});
+	if(content.locals) module.exports = content.locals;
+	// Hot Module Replacement
+	if(false) {
+		// When the styles change, update the <style> tags
+		if(!content.locals) {
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main.scss");
+				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+				update(newContent);
+			});
+		}
+		// When the module is disposed, remove the <style> tags
+		module.hot.dispose(function() { update(); });
+	}
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
+	exports = module.exports = __webpack_require__(181)();
+	// imports
+
+
+	// module
+	exports.push([module.id, "body, html {\n  width: 100vw;\n  height: 400vh;\n  cursor: none; }\n\n@keyframes rotate {\n  from {\n    transform: rotate(0deg); }\n  to {\n    transform: rotate(360deg); } }\n\n#cursor {\n  position: fixed;\n  height: 3.5rem;\n  width: 3.5rem;\n  border: 1px solid gray;\n  border-radius: 50%;\n  animation-name: rotate;\n  animation-duration: 8s;\n  animation-iteration-count: infinite;\n  animation-timing-function: linear; }\n\n.covercircle {\n  position: absolute;\n  border: 1px solid transparent;\n  background: white;\n  padding: 0;\n  margin: 0px;\n  width: 3rem;\n  height: 3rem;\n  border-radius: 50%;\n  list-style: none;\n  overflow: hidden;\n  top: 0px;\n  left: 0px;\n  margin: 2.5px; }\n\n.circle {\n  position: relative;\n  border: 1px solid transparent;\n  padding: 0;\n  margin: 0px;\n  width: 3.4rem;\n  height: 3.4rem;\n  border-radius: 50%;\n  list-style: none;\n  overflow: hidden; }\n\nli {\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 50%;\n  height: 50%;\n  transform-origin: 0% 100%; }\n\n.text {\n  position: absolute;\n  left: -100%;\n  width: 200%;\n  height: 200%;\n  text-align: center;\n  -webkit-transform: skewY(60deg) rotate(15deg);\n  -ms-transform: skewY(60deg) rotate(15deg);\n  transform: skewY(60deg) rotate(15deg);\n  padding-top: 20px; }\n\nli:first-child {\n  background: lightgray;\n  -webkit-transform: rotate(0deg) skewY(-45deg);\n  -ms-transform: rotate(0deg) skewY(-45deg);\n  transform: rotate(0deg) skewY(-45deg); }\n\nli:nth-child(2) {\n  background: white;\n  -webkit-transform: rotate(45deg) skewY(-45deg);\n  -ms-transform: rotate(45deg) skewY(-45deg);\n  transform: rotate(45deg) skewY(-45deg); }\n\nli:nth-child(3) {\n  background: lightgray;\n  -webkit-transform: rotate(90deg) skewY(-45deg);\n  -ms-transform: rotate(90deg) skewY(-45deg);\n  transform: rotate(90deg) skewY(-45deg); }\n\nli:nth-child(4) {\n  background: white;\n  -webkit-transform: rotate(135deg) skewY(-45deg);\n  -ms-transform: rotate(135deg) skewY(-45deg);\n  transform: rotate(135deg) skewY(-45deg); }\n\nli:nth-child(5) {\n  background: lightgray;\n  -webkit-transform: rotate(180deg) skewY(-45deg);\n  -ms-transform: rotate(180deg) skewY(-45deg);\n  transform: rotate(180deg) skewY(-45deg); }\n\nli:nth-child(6) {\n  background: white;\n  -webkit-transform: rotate(225deg) skewY(-45deg);\n  -ms-transform: rotate(225deg) skewY(-45deg);\n  transform: rotate(225deg) skewY(-45deg); }\n\nli:nth-child(7) {\n  background: lightgray;\n  -webkit-transform: rotate(270deg) skewY(-45deg);\n  -ms-transform: rotate(270deg) skewY(-45deg);\n  transform: rotate(270deg) skewY(-45deg); }\n\nli:nth-child(8) {\n  background: white;\n  -webkit-transform: rotate(315deg) skewY(-45deg);\n  -ms-transform: rotate(315deg) skewY(-45deg);\n  transform: rotate(315deg) skewY(-45deg); }\n", ""]);
+
+	// exports
+
+
+/***/ },
 /* 181 */
 /***/ function(module, exports) {
 
@@ -21867,46 +21906,6 @@
 		if(oldSrc)
 			URL.revokeObjectURL(oldSrc);
 	}
-
-
-/***/ },
-/* 183 */
-/***/ function(module, exports, __webpack_require__) {
-
-	// style-loader: Adds some css to the DOM by adding a <style> tag
-
-	// load the styles
-	var content = __webpack_require__(184);
-	if(typeof content === 'string') content = [[module.id, content, '']];
-	// add the styles to the DOM
-	var update = __webpack_require__(182)(content, {});
-	if(content.locals) module.exports = content.locals;
-	// Hot Module Replacement
-	if(false) {
-		// When the styles change, update the <style> tags
-		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main.scss");
-				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-				update(newContent);
-			});
-		}
-		// When the module is disposed, remove the <style> tags
-		module.hot.dispose(function() { update(); });
-	}
-
-/***/ },
-/* 184 */
-/***/ function(module, exports, __webpack_require__) {
-
-	exports = module.exports = __webpack_require__(181)();
-	// imports
-
-
-	// module
-	exports.push([module.id, "body, html {\n  width: 100vw;\n  height: 400vh;\n  cursor: none; }\n\n@keyframes rotate {\n  from {\n    transform: rotate(0deg); }\n  to {\n    transform: rotate(360deg); } }\n\n#cursor {\n  position: fixed;\n  height: 3.5rem;\n  width: 3.5rem;\n  border: 3px solid gray;\n  border-radius: 50%;\n  animation-name: rotate;\n  animation-duration: 8s;\n  animation-iteration-count: infinite;\n  animation-timing-function: linear; }\n\n.circle {\n  position: relative;\n  border: 1px solid transparent;\n  padding: 0;\n  margin: 0px;\n  width: 3.4rem;\n  height: 3.4rem;\n  border-radius: 50%;\n  list-style: none;\n  overflow: hidden; }\n\nli {\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 50%;\n  height: 50%;\n  transform-origin: 0% 100%; }\n\n.text {\n  position: absolute;\n  left: -100%;\n  width: 200%;\n  height: 200%;\n  text-align: center;\n  -webkit-transform: skewY(60deg) rotate(15deg);\n  -ms-transform: skewY(60deg) rotate(15deg);\n  transform: skewY(60deg) rotate(15deg);\n  padding-top: 20px; }\n\nli:first-child {\n  background: lightgray;\n  -webkit-transform: rotate(0deg) skewY(-45deg);\n  -ms-transform: rotate(0deg) skewY(-45deg);\n  transform: rotate(0deg) skewY(-45deg); }\n\nli:nth-child(2) {\n  background: white;\n  -webkit-transform: rotate(45deg) skewY(-45deg);\n  -ms-transform: rotate(45deg) skewY(-45deg);\n  transform: rotate(45deg) skewY(-45deg); }\n\nli:nth-child(3) {\n  background: lightgray;\n  -webkit-transform: rotate(90deg) skewY(-45deg);\n  -ms-transform: rotate(90deg) skewY(-45deg);\n  transform: rotate(90deg) skewY(-45deg); }\n\nli:nth-child(4) {\n  background: white;\n  -webkit-transform: rotate(135deg) skewY(-45deg);\n  -ms-transform: rotate(135deg) skewY(-45deg);\n  transform: rotate(135deg) skewY(-45deg); }\n\nli:nth-child(5) {\n  background: lightgray;\n  -webkit-transform: rotate(180deg) skewY(-45deg);\n  -ms-transform: rotate(180deg) skewY(-45deg);\n  transform: rotate(180deg) skewY(-45deg); }\n\nli:nth-child(6) {\n  background: white;\n  -webkit-transform: rotate(225deg) skewY(-45deg);\n  -ms-transform: rotate(225deg) skewY(-45deg);\n  transform: rotate(225deg) skewY(-45deg); }\n\nli:nth-child(7) {\n  background: lightgray;\n  -webkit-transform: rotate(270deg) skewY(-45deg);\n  -ms-transform: rotate(270deg) skewY(-45deg);\n  transform: rotate(270deg) skewY(-45deg); }\n\nli:nth-child(8) {\n  background: white;\n  -webkit-transform: rotate(315deg) skewY(-45deg);\n  -ms-transform: rotate(315deg) skewY(-45deg);\n  transform: rotate(315deg) skewY(-45deg); }\n", ""]);
-
-	// exports
 
 
 /***/ }
