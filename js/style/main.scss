@@ -4,8 +4,9 @@ body, html {
   cursor: none;
 }
 
-.shared{
-  border-radius: 50%;
+@keyframes rotate {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
 }
 
 #cursor {
@@ -13,103 +14,90 @@ body, html {
   height: 3.5rem;
   width: 3.5rem;
   border: 3px solid gray;
+  border-radius: 50%;
 
-  background-color: transparent;
-  .div {
-    background-color: transparent;
-  }
-
-  .shield{
-
-    div {
-      position:relative;
-      // margin: 6px 0px 0px 6px;
-      top:0px;
-      left:0px;
-      height: 50px;
-      width: 50px;
-      // animation-name: rotate;
-      // animation-duration: 2s;
-      // animation-iteration-count: infinite;
-      // animation-timing-function: linear;
-    }
-
-    .child1, .child2, .child3, .child4{
-      position: absolute;
-      top:0px;
-      left:0px;
-    }
-
-    .child1{
-      border-right: solid 3px black;
-      border-top: solid 3px transparent;
-      border-left: solid 3px black;
-      border-bottom: solid 3px transparent;
-      z-index: 1000;
-    }
-    .child2{
-      transform: rotate(45deg);
-      border-right: solid 3px green;
-      border-top: solid 3px transparent;
-      border-left: solid 3px green;
-      border-bottom: solid 3px transparent;
-    }
-    .child3{
-      border-top: solid 3px blue;
-      border-right: solid 3px transparent;
-      border-bottom: solid 3px blue;
-      border-left: solid 3px transparent;
-    }
-    .child4{
-      transform: rotate(45deg);
-      border-top: solid 3px red;
-      border-right: solid 3px transparent;
-      border-bottom: solid 3px red;
-      border-left: solid 3px transparent;
-    }
-
-    // .child2{
-    //   background-image: linear-gradient(126deg, gray 50%, white 50%), linear-gradient(90deg, white 50%, gray 50%);
-    // }
-    //
-    // .child3{
-    //   background-image: linear-gradient(126deg, gray 50%, white 50%), linear-gradient(90deg, white 50%, gray 50%);
-    // }
-
-    // .child2 {
-    //
-    //   border-top: solid 3px transparent;
-    //   border-left: solid 3px transparent;
-    //   border-bottom: solid 3px transparent;
-    //   border-right: solid 3px transparent;
-    //
-    //   animation-name: rotate2;
-    //   animation-duration: 2s;
-    //   animation-iteration-count: infinite;
-    //   animation-timing-function: linear;
-    // }
-    //
-    // .child3{
-    //
-    //   border-top: solid 3px blue;
-    //   border-left: solid 3px green;
-    //   border-bottom: solid 3px red;
-    //   border-right: solid yellow;
-    //
-    //   animation-name: rotate;
-    //   animation-duration: 2s;
-    //   animation-iteration-count: infinite;
-    //   animation-timing-function: linear;
-    // }
-  }
+  animation-name: rotate;
+  animation-duration: 8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
 
-@keyframes rotate2 {
-  from {transform: rotate(45deg);}
-  to {transform: rotate(405deg);}
+.circle {
+	position: relative;
+	border: 1px solid transparent;
+	padding: 0;
+  margin: 0px;
+	width: 3.4rem;
+  height: 3.4rem;
+	border-radius: 50%;
+	list-style: none;
+  overflow: hidden;
 }
 
-@keyframes rotate {
-  from {transform: rotate(0deg);}
-  to {transform: rotate(360deg);}
+li {
+	overflow: hidden;
+	position: absolute;
+	top: 0; right: 0;
+	width: 50%; height: 50%;
+	transform-origin: 0% 100%;
+}
+
+.text {
+	position: absolute;
+	left: -100%;
+	width: 200%; height: 200%;
+	text-align: center;
+  -webkit-transform: skewY(60deg) rotate(15deg);
+  -ms-transform: skewY(60deg) rotate(15deg);
+    transform: skewY(60deg) rotate(15deg);
+    padding-top: 20px;
+}
+
+li:first-child {
+  background: lightgray;
+  -webkit-transform: rotate(0deg) skewY(-45deg);
+  -ms-transform: rotate(0deg) skewY(-45deg);
+	transform: rotate(0deg) skewY(-45deg);
+}
+li:nth-child(2) {
+  background: white;
+  -webkit-transform: rotate(45deg) skewY(-45deg);
+  -ms-transform: rotate(45deg) skewY(-45deg);
+	transform: rotate(45deg) skewY(-45deg);
+}
+li:nth-child(3) {
+  background: lightgray;
+  -webkit-transform: rotate(90deg) skewY(-45deg);
+  -ms-transform: rotate(90deg) skewY(-45deg);
+	transform: rotate(90deg) skewY(-45deg);
+}
+li:nth-child(4) {
+  background: white;
+  -webkit-transform: rotate(135deg) skewY(-45deg);
+  -ms-transform: rotate(135deg) skewY(-45deg);
+	transform: rotate(135deg) skewY(-45deg);
+}
+li:nth-child(5) {
+  background: lightgray;
+  -webkit-transform: rotate(180deg) skewY(-45deg);
+  -ms-transform: rotate(180deg) skewY(-45deg);
+	transform: rotate(180deg) skewY(-45deg);
+}
+li:nth-child(6) {
+  background: white;
+  -webkit-transform: rotate(225deg) skewY(-45deg);
+  -ms-transform: rotate(225deg) skewY(-45deg);
+	transform: rotate(225deg) skewY(-45deg);
+}
+li:nth-child(7) {
+  background: lightgray;
+  -webkit-transform: rotate(270deg) skewY(-45deg);
+  -ms-transform: rotate(270deg) skewY(-45deg);
+	transform: rotate(270deg) skewY(-45deg);
+}
+li:nth-child(8) {
+  background: white;
+  -webkit-transform: rotate(315deg) skewY(-45deg);
+  -ms-transform: rotate(315deg) skewY(-45deg);
+	transform: rotate(315deg) skewY(-45deg);
 }

@@ -21536,16 +21536,20 @@
 
 	      var style = { top: clientY, left: clientX };
 	      return _react2.default.createElement(
-	        'ul',
-	        { className: 'circle' },
-	        _react2.default.createElement('li', null),
-	        _react2.default.createElement('li', null),
-	        _react2.default.createElement('li', null),
-	        _react2.default.createElement('li', null),
-	        _react2.default.createElement('li', null),
-	        _react2.default.createElement('li', null),
-	        _react2.default.createElement('li', null),
-	        _react2.default.createElement('li', null)
+	        'div',
+	        { id: 'cursor', style: style },
+	        _react2.default.createElement(
+	          'ul',
+	          { className: 'circle' },
+	          _react2.default.createElement('li', null),
+	          _react2.default.createElement('li', null),
+	          _react2.default.createElement('li', null),
+	          _react2.default.createElement('li', null),
+	          _react2.default.createElement('li', null),
+	          _react2.default.createElement('li', null),
+	          _react2.default.createElement('li', null),
+	          _react2.default.createElement('li', null)
+	        )
 	      );
 	    }
 	  }]);
@@ -21881,8 +21885,8 @@
 	if(false) {
 		// When the styles change, update the <style> tags
 		if(!content.locals) {
-			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main2.scss", function() {
-				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main2.scss");
+			module.hot.accept("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main.scss", function() {
+				var newContent = require("!!./../../node_modules/css-loader/index.js!./../../node_modules/sass-loader/index.js!./main.scss");
 				if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
 				update(newContent);
 			});
@@ -21900,7 +21904,7 @@
 
 
 	// module
-	exports.push([module.id, ".circle {\n  position: relative;\n  border: 1px solid black;\n  padding: 0;\n  margin: 1em auto;\n  width: 20em;\n  height: 20em;\n  border-radius: 50%;\n  list-style: none;\n  overflow: hidden; }\n\nli {\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 50%;\n  height: 50%;\n  transform-origin: 0% 100%; }\n\n.text {\n  position: absolute;\n  left: -100%;\n  width: 200%;\n  height: 200%;\n  text-align: center;\n  -webkit-transform: skewY(60deg) rotate(15deg);\n  -ms-transform: skewY(60deg) rotate(15deg);\n  transform: skewY(60deg) rotate(15deg);\n  padding-top: 20px; }\n\nli:first-child {\n  background: lightgray;\n  -webkit-transform: rotate(0deg) skewY(-60deg);\n  -ms-transform: rotate(0deg) skewY(-60deg);\n  transform: rotate(0deg) skewY(-60deg); }\n\nli:nth-child(2) {\n  background: white;\n  -webkit-transform: rotate(30deg) skewY(-60deg);\n  -ms-transform: rotate(30deg) skewY(-60deg);\n  transform: rotate(30deg) skewY(-60deg); }\n\nli:nth-child(3) {\n  background: lightgray;\n  -webkit-transform: rotate(60deg) skewY(-60deg);\n  -ms-transform: rotate(60deg) skewY(-60deg);\n  transform: rotate(60deg) skewY(-60deg); }\n\nli:nth-child(4) {\n  background: white;\n  -webkit-transform: rotate(90deg) skewY(-60deg);\n  -ms-transform: rotate(90deg) skewY(-60deg);\n  transform: rotate(90deg) skewY(-60deg); }\n\nli:nth-child(5) {\n  background: lightgray;\n  -webkit-transform: rotate(120deg) skewY(-60deg);\n  -ms-transform: rotate(120deg) skewY(-60deg);\n  transform: rotate(120deg) skewY(-60deg); }\n\nli:nth-child(6) {\n  background: white;\n  -webkit-transform: rotate(150deg) skewY(-60deg);\n  -ms-transform: rotate(150deg) skewY(-60deg);\n  transform: rotate(150deg) skewY(-60deg); }\n\nli:nth-child(7) {\n  background: lightgray;\n  -webkit-transform: rotate(180deg) skewY(-60deg);\n  -ms-transform: rotate(180deg) skewY(-60deg);\n  transform: rotate(180deg) skewY(-60deg); }\n\nli:nth-child(8) {\n  background: white;\n  -webkit-transform: rotate(210deg) skewY(-60deg);\n  -ms-transform: rotate(210deg) skewY(-60deg);\n  transform: rotate(210deg) skewY(-60deg); }\n", ""]);
+	exports.push([module.id, "body, html {\n  width: 100vw;\n  height: 400vh;\n  cursor: none; }\n\n@keyframes rotate {\n  from {\n    transform: rotate(0deg); }\n  to {\n    transform: rotate(360deg); } }\n\n#cursor {\n  position: fixed;\n  height: 3.5rem;\n  width: 3.5rem;\n  border: 3px solid gray;\n  border-radius: 50%;\n  animation-name: rotate;\n  animation-duration: 8s;\n  animation-iteration-count: infinite;\n  animation-timing-function: linear; }\n\n.circle {\n  position: relative;\n  border: 1px solid transparent;\n  padding: 0;\n  margin: 0px;\n  width: 3.4rem;\n  height: 3.4rem;\n  border-radius: 50%;\n  list-style: none;\n  overflow: hidden; }\n\nli {\n  overflow: hidden;\n  position: absolute;\n  top: 0;\n  right: 0;\n  width: 50%;\n  height: 50%;\n  transform-origin: 0% 100%; }\n\n.text {\n  position: absolute;\n  left: -100%;\n  width: 200%;\n  height: 200%;\n  text-align: center;\n  -webkit-transform: skewY(60deg) rotate(15deg);\n  -ms-transform: skewY(60deg) rotate(15deg);\n  transform: skewY(60deg) rotate(15deg);\n  padding-top: 20px; }\n\nli:first-child {\n  background: lightgray;\n  -webkit-transform: rotate(0deg) skewY(-45deg);\n  -ms-transform: rotate(0deg) skewY(-45deg);\n  transform: rotate(0deg) skewY(-45deg); }\n\nli:nth-child(2) {\n  background: white;\n  -webkit-transform: rotate(45deg) skewY(-45deg);\n  -ms-transform: rotate(45deg) skewY(-45deg);\n  transform: rotate(45deg) skewY(-45deg); }\n\nli:nth-child(3) {\n  background: lightgray;\n  -webkit-transform: rotate(90deg) skewY(-45deg);\n  -ms-transform: rotate(90deg) skewY(-45deg);\n  transform: rotate(90deg) skewY(-45deg); }\n\nli:nth-child(4) {\n  background: white;\n  -webkit-transform: rotate(135deg) skewY(-45deg);\n  -ms-transform: rotate(135deg) skewY(-45deg);\n  transform: rotate(135deg) skewY(-45deg); }\n\nli:nth-child(5) {\n  background: lightgray;\n  -webkit-transform: rotate(180deg) skewY(-45deg);\n  -ms-transform: rotate(180deg) skewY(-45deg);\n  transform: rotate(180deg) skewY(-45deg); }\n\nli:nth-child(6) {\n  background: white;\n  -webkit-transform: rotate(225deg) skewY(-45deg);\n  -ms-transform: rotate(225deg) skewY(-45deg);\n  transform: rotate(225deg) skewY(-45deg); }\n\nli:nth-child(7) {\n  background: lightgray;\n  -webkit-transform: rotate(270deg) skewY(-45deg);\n  -ms-transform: rotate(270deg) skewY(-45deg);\n  transform: rotate(270deg) skewY(-45deg); }\n\nli:nth-child(8) {\n  background: white;\n  -webkit-transform: rotate(315deg) skewY(-45deg);\n  -ms-transform: rotate(315deg) skewY(-45deg);\n  transform: rotate(315deg) skewY(-45deg); }\n", ""]);
 
 	// exports
 

@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from 'react'
-require('../style/main2.scss');
+require('../style/main.scss');
 
 export default class Main extends Component {
   constructor(props) {
@@ -23,16 +23,18 @@ export default class Main extends Component {
     let {clientY, clientX} = this.state;
     let style={top:clientY, left:clientX};
     return (
-      <ul className='circle'>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
+      <div id='cursor' style={style}>
+        <ul className='circle'>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
     );
   }
 }
