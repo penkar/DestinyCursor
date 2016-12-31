@@ -1,9 +1,23 @@
 .body {
+  padding: 20px;
+
+  
   h1, h2 {
     text-align: center;
   }
-  
+
   p {
 
+  }
+  .aff, .net{
+    font-weight: 800;
+  }
+
+  .term.aff{
+    color: green;
+  }
+
+  .term.neg{
+    color: red;
   }
 }
