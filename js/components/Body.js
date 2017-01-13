@@ -1,5 +1,6 @@
 import React, {Component, PropTypes} from 'react';
 import {Term} from './index'
+import Button from './Button'
 require('../style/Body.scss');
 
 export default class Body extends Component {
@@ -43,6 +44,14 @@ export default class Body extends Component {
         <p>
           Pellentesque convallis accumsan leo non interdum. Fusce convallis ut elit nec scelerisque. <Term term={'Maecenas'} {...term} aff={true}/> scelerisque tempor convallis. Fusce vehicula orci est, nec luctus risus vehicula non. Proin purus ipsum, ullamcorper et fermentum ac, placerat sed tortor. <Term term={'Phasellus'} {...term} aff={true}/> at ex nisi. Suspendisse quis dignissim elit, nec vestibulum mauris. Donec tristique tempus dolor id suscipit. Ut venenatis erat massa, feugiat lacinia purus pharetra id. Nam feugiat ornare pharetra. Nullam lacinia leo ut ligula ullamcorper molestie. Proin egestas mattis lectus vitae mollis. Vestibulum nec porttitor ex.
         </p>
+        <hr />
+        <div>
+          <Button key='button1' title='Vitae' />
+          <Button key='button2' title='Fusce' />
+          <Button key='button3' title='Justo' />
+          <Button key='button4' title='Ispum' />
+          <Button key='button5' title='Donec' />
+        </div>
       </div>
     )
   }
