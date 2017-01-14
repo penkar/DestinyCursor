@@ -84,6 +84,7 @@
 
 .red, .green {
   #cursor{
+    transition: box-shadow 0.75s ease-in-out;
     animation-name: rotate-rev;
     animation-duration: 8s;
     animation-iteration-count: infinite;
