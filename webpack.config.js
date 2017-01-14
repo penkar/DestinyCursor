@@ -16,6 +16,11 @@ module.exports = {
   module: {
     loaders: [
       {
+        test: /\.jpg$/,
+        loader: 'file-loader',
+        exclude: /node_modules/
+      },
+      {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass'],
         exclude: /node_modules/
