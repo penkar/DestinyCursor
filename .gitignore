@@ -1,4 +1,6 @@
 /node_modules/*
-bundle.js
+/js/*
+package.json
+webpack.config.js
 4f7cc0a3490f6bcf5e50303119cf950a.jpg
 npm-debug.log
