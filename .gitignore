@@ -1,4 +1,5 @@
 /node_modules/*
+/dist/*
 bundle.js
 4f7cc0a3490f6bcf5e50303119cf950a.jpg
 npm-debug.log
