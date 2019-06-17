@@ -1,39 +1,42 @@
-// require('babel-polyfill');
-
-var path = require('path');
 var webpack = require('webpack');
 
 module.exports = {
   context: __dirname,
-  entry: './js/index.js',
+  entry: {
+    'bundle.js':'./js/index.js',
+  },
   output: {
     path: __dirname,
-    filename: 'bundle.js'
+    filename: './dist/[name]'
   },
-  plugins: [
-    new webpack.OldWatchingPlugin()
-  ],
   module: {
-    loaders: [
-      {
-        test: /\.jpg$/,
-        loader: 'file-loader',
-        exclude: /node_modules/
-      },
-      {
-        test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
-        exclude: /node_modules/
-      },
-      {
-        test: /.jsx?$/,
-        loader: 'babel-loader',
-        exclude: /node_modules/,
-        query: {
-          presets: ['es2015', 'stage-0', 'react']
-        }
+    rules: [{
+      test: /\.jpg$/,
+      use: ["file-loader"]
+    },{
+      test: /\.scss$/,
+      use: ["style-loader", "css-loader", "sass-loader"]
+    },{
+      test:/\.ttf/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'url-loader'
       }
-    ]
+    },{
+      test: /\.html$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'html-loader'
+      }
+    },{
+      test: /\.js$/,
+      exclude: /(node_modules|bower_components)/,
+      use: {
+        loader: 'babel-loader'
+      }
+    }]
   },
-  watch: true
-};
+  watch: true,
+  devtool: 'source-map',
+  mode: 'development'
+}
