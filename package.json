@@ -4,6 +4,7 @@
   "description": "\"Very different cursor based on Bungie's Destiny\"",
   "main": "index.js",
   "scripts": {
+    "dev":"webpack & python -m SimpleHTTPServer",
     "start": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
