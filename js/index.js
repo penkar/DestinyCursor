@@ -1,10 +1,9 @@
 'use strict'
 import React from 'react'
-import { render } from 'react-dom';
+import DOM from 'react-dom';
+import GenericBG from './components/GenericBG.js';
 
-import {GenericBG} from './components/index';
-
-render(
+DOM.render(
   <GenericBG />,
   document.getElementById('app')
 );

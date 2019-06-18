@@ -1,10 +1,6 @@
-import React, {Component, PropTypes} from 'react'
-
-export default class Button extends Component{
-  static propTyps = {
-    title: PropTypes.string,
-  }
-
+import * as React from 'react'
+type Props = {title:string}
+export default class Button extends React.Component<Props>{
   render() {
     return (
       <div className='button'>

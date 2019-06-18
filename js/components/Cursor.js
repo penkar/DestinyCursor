@@ -1,8 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import cn from 'classnames';
-require('../style/Cursor.scss');
 
-export default class Cursor extends Component {
+export default class Cursor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -13,36 +12,23 @@ export default class Cursor extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('mousemove', ::this._mouseMove);
-    window.addEventListener('mousedown', ::this._mouseDown);
-    window.addEventListener('mouseup', ::this._mouseUp);
+    window.addEventListener('mousemove', this.mouseMove);
+    window.addEventListener('mousedown', this.mouseDown);
+    window.addEventListener('mouseup', this.mouseUp);
   }
-
-  _mouseDown() {
-    this.setState({clicked: true});
-  }
-
-  _mouseUp() {
-    this.setState({clicked: false});
-  }
-
-  _mouseMove(data) {
-    let {clientY, clientX} = data;
-    this.setState({clientY, clientX});
-  }
-
   render() {
-    let {clientY, clientX, clicked} = this.state;
-    let style={top:clientY-28, left:clientX-28};
+    const {clientY, clientX, clicked} = this.state;
+    const style={top:clientY-28, left:clientX-28};
     return (
       <div id='cursor' style={style} className={cn({clicked})}>
         <ul>
-          <li/>
-          <li/>
-          <li/>
-          <li/>
+          <li/><li/><li/><li/>
         </ul>
       </div>
     )
   }
+
+  mouseDown = () => this.setState({clicked:true});
+  mouseUp = () => this.setState({clicked:false});
+  mouseMove = ({clientX, clientY}) => this.setState({clientY, clientX});
 }

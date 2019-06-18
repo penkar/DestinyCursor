@@ -1,9 +1,10 @@
-import React, {Component} from 'react';
+import * as React from 'react';
 import cn from 'classnames';
-import {Header, Body, Cursor} from './index'
-require('../style/HTML.scss');
+import Body from './Body.js';
+import Cursor from './Cursor.js';
+require('../style/body.scss');
 
-export default class GenericBG extends Component {
+export default class GenericBG extends React.Component<{}> {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,24 +12,17 @@ export default class GenericBG extends Component {
       green: false,
     }
   }
-
-  on(data) {
-    this.setState(data);
-  }
-
-  off() {
-    this.setState({red: false, green: false});
-  }
-
   render() {
-    let {red, green} = this.state;
-    let body = {on: ::this.on, off: ::this.off};
+    const {red, green} = this.state;
     return (
       <div className={cn({red, green})}>
-        <Header />
-        <Body {...body} />
+        <div className='header'>
+          Custom Cursor Example Site
+        </div>
+        { Body(this.change) }
         <Cursor />
       </div>
     )
   }
+  change = (data) => this.setState(data);
 }
