@@ -7,9 +7,7 @@ export default class Term extends React.Component<Props> {
   render() {
     const {aff} = this.props;
     return (
-      <span className={cn('term', {aff, neg:!aff})}
-        onMouseEnter={this.on}
-        onMouseLeave={this.off}>
+      <span className={cn('term', {aff, neg:!aff})} onMouseEnter={this.on} onMouseLeave={this.off}>
         { this.props.term }
       </span>
     );
