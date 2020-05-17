@@ -1,4 +1,4 @@
-#cursor {
+.cursor {
   pointer-events: none;
   z-index: 2;
   position: fixed;
@@ -83,7 +83,7 @@
 }
 
 .red, .green {
-  #cursor{
+  .cursor{
     transition: box-shadow 0.75s ease-in-out;
     animation-name: rotate-rev;
     animation-duration: 8s;
@@ -93,7 +93,7 @@
 }
 
 .red {
-  #cursor {
+  .cursor {
     &.clicked {
       background-color: rgba(239, 40, 40, 0.4);
     }
@@ -111,7 +111,7 @@
 }
 
 .green {
-  #cursor {
+  .cursor {
     &.clicked {
       background-color: rgba(44, 165, 44, 0.4);
     }

@@ -1,6 +1,9 @@
 import React from 'react';
-const Button = (title:string) => 
-  <div key={title} className='button'>
-    <span>{title}</span>
-  </div>
-export default Button;
+
+export default function Button ({ title }) {
+  return (
+    <div className='button'>
+      <span>{title}</span>
+    </div>
+  );
+}
