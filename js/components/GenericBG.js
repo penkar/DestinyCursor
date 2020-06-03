@@ -3,6 +3,8 @@ import cn from "classnames";
 
 import Body from "./Body.js";
 import styles from "./GenericBG.module.scss";
+
+
 require("../style/body.scss");
 
 export default function GenericBG() {

@@ -2,9 +2,11 @@ import * as React from "react";
 import Term from "./Term"
 import Button from "./Button"
 
+import styles from "./Body.module.scss";
+
 export default function Body ({ change }) {
   return (
-    <div className="body">
+    <div className={styles.body}>
       <h1>Lorem Ipsum</h1>
       <h2>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</h2>
       <h2>"There is no one who loves pain itself, who seeks after it and wants to have it, simply because it is pain..."</h2>

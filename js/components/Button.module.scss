@@ -1,0 +1,25 @@
+.button {
+  display: inline-block;
+  margin: 1rem;
+  line-height: 3.5rem;
+  width: 3.5rem;
+  background-color: #fbdede;
+  text-align: center;
+  vertical-align: center;
+  border-radius: 5px;
+  border: 2px white solid;
+
+  -webkit-filter: grayscale(00%);
+  -moz-filter: grayscale(00%);
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  transition: all 1s ease;
+
+  &:hover{
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    transform: scale(1.1);
+  }
+}
