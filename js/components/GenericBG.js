@@ -2,21 +2,19 @@ import React, { useEffect, useState } from "react";
 import cn from "classnames";
 
 import Body from "./Body.js";
+import styles from "./GenericBG.module.scss";
 require("../style/body.scss");
 
 export default function GenericBG() {
 
-  const [ cursorState, setCursorState ] = useState({
-    clientY: 100,
-    clientX: 100,
-  });
+  const [ cursorState, setCursorState ] = useState({clientY: 100, clientX: 100});
   const [ clickState, setClickState ] = useState(false);
   const [ cursorColor, setCursorColor ] = useState("");
 
   useEffect(() => {
+    const mouseMove = ({ clientX, clientY }) => setCursorState({clientY, clientX});
     const mouseDown = () => setClickState(true);
     const mouseUp = () => setClickState(false);
-    const mouseMove = ({ clientX, clientY }) => setCursorState({clientY, clientX});
 
     window.addEventListener("mousemove", mouseMove);
     window.addEventListener("mousedown", mouseDown);
@@ -33,7 +31,7 @@ export default function GenericBG() {
 
   return (
     <div className={cn(cursorColor)}>
-      <div className="header">
+      <div className={styles.header}>
         Custom Cursor Example Site
       </div>
       <Body change={setCursorColor} />
