@@ -1,21 +1,31 @@
-var webpack = require('webpack');
+const webpack = require('webpack');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   context: __dirname,
   entry: {
-    'bundle.js':'./js/index.js',
+    'bundle.js': './js/index.js',
   },
   output: {
     path: __dirname,
     filename: './dist/[name]'
   },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'dist/[name].css',
+      chunkFilename: 'dist/[id].css'
+    })
+  ],
   module: {
     rules: [{
       test: /\.jpg$/,
-      use: ["file-loader"]
-    },{
-      test: /\.scss$/,
-      use: ["style-loader", "css-loader", "sass-loader"]
+      loader: [{
+        loader: 'file-loader',
+        options: {
+          path: './dist',
+          name: '[name].[ext]'
+        }
+      }]
     },{
       test:/\.ttf/,
       exclude: /(node_modules|bower_components)/,
@@ -25,15 +35,40 @@ module.exports = {
     },{
       test: /\.html$/,
       exclude: /(node_modules|bower_components)/,
-      use: {
-        loader: 'html-loader'
-      }
+      use: ['html-loader']
     },{
       test: /\.js$/,
       exclude: /(node_modules|bower_components)/,
-      use: {
-        loader: 'babel-loader'
-      }
+      use: ['babel-loader']
+    },{
+      test: /\.module\.s(a|c)ss$/,
+      loader: [
+        MiniCssExtractPlugin.loader,
+        {
+          loader: 'css-loader',
+          options: {
+            modules: true,
+            sourceMap: true
+          }
+        },{
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
+        }
+      ]
+    },{
+      test: /\.s(a|c)ss$/,
+      exclude: /\.module.(s(a|c)ss)$/,
+      loader: [
+        MiniCssExtractPlugin.loader,
+        'css-loader',{
+          loader: 'sass-loader',
+          options: {
+            sourceMap: true
+          }
+        }
+      ]
     }]
   },
   watch: true,

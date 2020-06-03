@@ -4,19 +4,18 @@
   "description": "\"Very different cursor based on Bungie's Destiny\"",
   "main": "index.js",
   "scripts": {
-    "dev":"webpack & python -m SimpleHTTPServer",
+    "dev": "webpack & python -m SimpleHTTPServer",
     "start": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "autoprefixer": "^9.8.0",
     "classnames": "^2.2.6",
-    "css-loader": "^3.0.0",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^4.0.0",
-    "node-sass": "^4.12.0",
+    "postcss-loader": "^3.0.0",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1"
+    "react-dom": "^16.8.6"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
@@ -25,6 +24,11 @@
     "@babel/preset-flow": "^7.0.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
+    "css-loader": "^3.5.3",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "style-loader": "^1.2.1",
     "webpack": "^4.34.0",
     "webpack-cli": "^3.3.4"
   },
