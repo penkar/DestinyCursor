@@ -4,7 +4,6 @@ import cn from "classnames";
 import Body from "./Body.js";
 import styles from "./GenericBG.module.scss";
 
-
 require("../style/body.scss");
 
 export default function GenericBG() {
@@ -32,7 +31,7 @@ export default function GenericBG() {
   const style = { top: clientY-28, left: clientX-28 };
 
   return (
-    <div className={cn(cursorColor)}>
+    <div className={cursorColor}>
       <div className={styles.header}>
         Custom Cursor Example Site
       </div>
