@@ -22,8 +22,7 @@ module.exports = {
       loader: [{
         loader: 'file-loader',
         options: {
-          path: './dist',
-          name: '[name].[ext]'
+          name: './dist/[name].[ext]'
         }
       }]
     },{
@@ -37,7 +36,7 @@ module.exports = {
       exclude: /(node_modules|bower_components)/,
       use: ['html-loader']
     },{
-      test: /\.js$/,
+      test: /\.js/,
       exclude: /(node_modules|bower_components)/,
       use: ['babel-loader']
     },{
